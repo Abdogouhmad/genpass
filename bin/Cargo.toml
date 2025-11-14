@@ -1,0 +1,14 @@
+[package]
+name = "genpass"
+version = "1.0.0"
+edition = "2021"
+authors = ["Abderrahman <gouhmada@gmail.com>"]
+license = "MIT"
+description = "CLI binary for genpass"
+
+[dependencies]
+genpass_lib = { path = "../lib" } # ✅ correct
+anyhow = { workspace = true }
+clap = { workspace = true }
+log = { workspace = true }
+env_logger = { workspace = true }
