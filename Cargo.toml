@@ -5,7 +5,7 @@ resolver = "2"
 # Common metadata for all workspace crates
 [workspace.package]
 name = "genpass"
-version = "1.0.0"
+version = "1.0.1"
 authors = ["Abdogouhmad <gouhmada@gmail.com>"]
 edition = "2021"
 description = "Password & username generator with notes saved in a file"

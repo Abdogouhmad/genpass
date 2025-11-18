@@ -23,9 +23,14 @@ pub struct GenCli {
 
     #[arg(short, long, help = "Generate username")]
     pub user: bool,
-
-    #[arg(short, long, help = "Store generated auth within a file")]
-    pub generate: bool,
+    #[arg(
+    short = 'g',
+    long = "generate",
+    help = "Generate credentials and optionally add a note",
+    value_name = "NOTE",
+    num_args = 0..=1
+)]
+    pub generate: Option<Option<String>>,
 
     #[command(subcommand)]
     pub command: Option<GenCommands>,
@@ -57,13 +62,17 @@ impl GenCli {
         }
 
         // generate and store in a file
-        if self.generate {
+        if let Some(note_option) = &self.generate {
+            let note = note_option
+                .clone()
+                .unwrap_or_else(|| "No note provided".to_string());
+
             let custom_file = GenFile {
                 filename: "password.md".to_string(),
                 file_path: custom_path,
                 generated_content: format!(
-                    "# New Credentials\nUsername: {}\nPassword: {}\n",
-                    username, password
+                    "# {}\nUsername: {}\nPassword: {}\n",
+                    note, username, password
                 ),
             };
 

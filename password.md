@@ -1,8 +1,16 @@
-# New Credentials
-Username: v73tb
-Password: +.(O@a|H?z5)4rC%8eO%
+# google auth
+Username: 20mzc
+Password: IeuWpX)27{e3I
 
-# New Credentials
-Username: 0qc34z
-Password: 20}80>38h375h!>3L8
+# facebook auth
+Username: mhf9
+Password: =SW3!3V79jf-J8
+
+# ig auth
+Username: o0939
+Password: 8w2-TUHg6](R1C]
+
+# phone auth
+Username: 637og1hw
+Password: 8KD,Tsy0uWoUAun7IR
 
