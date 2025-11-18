@@ -5,7 +5,7 @@ resolver = "2"
 # Common metadata for all workspace crates
 [workspace.package]
 name = "genpass"
-version = "1.0.1"
+version = "1.1.0"
 authors = ["Abdogouhmad <gouhmada@gmail.com>"]
 edition = "2021"
 description = "Password & username generator with notes saved in a file"
@@ -37,13 +37,13 @@ strip = true      # Strip symbols to reduce size
 # Workspace-wide dependencies
 # ===========================
 [workspace.dependencies]
-clap = { version = "4.3", features = ["derive"] }  # CLI argument parser
-serde = { version = "1.0", features = ["derive"] } # For saving notes in JSON
-serde_json = "1.0"                                 # JSON storage
-rand = "0.9.2"                                     # Random password generation
-anyhow = "1.0"                                     # Error handling
-log = "0.4"                                        # Logging
-env_logger = "0.11.8"                              # Logging backend
+clap = { version = "4.3", features = ["derive"] }                   # CLI argument parser
+serde = { version = "1.0", features = ["derive"] }                  # For saving notes in JSON
+serde_json = "1.0"                                                  # JSON storage
+rand = "0.9.2"                                                      # Random password generation
+anyhow = "1.0"                                                      # Error handling
+log = "0.4"                                                         # Logging
+env_logger = "0.11.8"                                               # Logging backend
 aes-gcm = "0.10"
 argon2 = { version = "0.5.3", features = ["std"] }
 rpassword = "7.4.0"

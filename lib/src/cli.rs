@@ -1,7 +1,7 @@
 use std::path::PathBuf;
 
-use crate::file::GenFile;
 use crate::generating::CredentialGenerator;
+use crate::{encryption::GenEnc, file::GenFile};
 use anyhow::Result;
 use clap::{
     builder::{styling::AnsiColor, Styles},
@@ -39,10 +39,10 @@ pub struct GenCli {
 #[derive(Subcommand, Debug)]
 pub enum GenCommands {
     /// Encrypt a file or text
-    Encrypt,
+    Encrypt { file: String },
 
     /// Decrypt a file or text
-    Decrypt,
+    Decrypt { file: String },
 }
 
 impl GenCli {
@@ -84,10 +84,17 @@ impl GenCli {
         }
 
         // Encrypt and Dencrypt
+        // Encrypt and Decrypt
         if let Some(cmd) = &self.command {
             match cmd {
-                GenCommands::Encrypt => println!("🧩 Encryption selected"),
-                GenCommands::Decrypt => println!("🔓 Decryption selected"),
+                GenCommands::Encrypt { file } => {
+                    println!("🧩 Encryption selected");
+                    GenEnc::encrypt_file(file)?;
+                }
+                GenCommands::Decrypt { file } => {
+                    println!("🔓 Decryption selected");
+                    GenEnc::decrypt_file(file)?;
+                }
             }
         }
 
