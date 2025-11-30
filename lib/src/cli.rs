@@ -1,5 +1,3 @@
-use std::path::PathBuf;
-
 use crate::generating::CredentialGenerator;
 use crate::{encryption::GenEnc, file::GenFile};
 use anyhow::Result;
@@ -7,6 +5,7 @@ use clap::{
     builder::{styling::AnsiColor, Styles},
     Parser, Subcommand,
 };
+use std::path::PathBuf;
 
 /// Custom style configuration for colored CLI help
 #[derive(Parser, Debug)]
@@ -30,7 +29,7 @@ pub struct GenCli {
     value_name = "NOTE",
     num_args = 0..=1
 )]
-    pub generate: Option<Option<String>>,
+    pub generate: Option<String>,
 
     #[command(subcommand)]
     pub command: Option<GenCommands>,
@@ -63,9 +62,7 @@ impl GenCli {
 
         // generate and store in a file
         if let Some(note_option) = &self.generate {
-            let note = note_option
-                .clone()
-                .unwrap_or_else(|| "No note provided".to_string());
+            let note = note_option.clone();
 
             let custom_file = GenFile {
                 filename: "password.md".to_string(),
